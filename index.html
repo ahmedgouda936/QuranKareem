@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(199, 199, 199);
+        }
+        select {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            width: 300px;
+            left: 700;
+            position: relative;
+            border-radius: 10px;
+        }
+        ul {
+            list-style-type: none;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        div {
+            width: 1350px;
+            background-color: aqua;
+            /* //<!-- padding: 20px;--> */
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        audio {
+            margin: 20px;
+            left: 500px;
+            width: 330px;
+            height: 60px;
+            border-radius: 10px;
+            text-align: center;
+            position: fixed;
+        }
+   
+
+        button {
+            height: 40px;
+            font-size: 22px;
+            margin: 5px;
+            background: linear-gradient(to right botton, #273c75, #079992);
+            color: hsl(0, 0%, 7%);
+            border-radius: 5px;
+
+        }
+    </style>
+    <!-------------------------------------------------------------------------------->
+</head>
+
+<body>
+    <label style="font-size:40px ; font-weight: bold;">القرآن الكريم </label>
+    <br>
+   
+    <audio id="audio" controls>
+        <source src="" type="audio/mp3">
+    </audio>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <select id="kkk" >
+        <option value="1">خالد القحطاني</option>
+        <option value="2">ماهر المعيقلي</option>
+        <option value="3">السديس</option>
+        <option value="4">عبد الباسط</option>
+        <option value="5">محمد جبريل</option>
+        <option value="6">المنشاوي</option>
+        <option value="7">فارس عباد</option>
+        <option value="8">الحصري</option>
+        <option value="9">البنا</option>
+        <option value="10">العفاسي</option>
+        <option value="11">مصطفى إسماعيل</option>
+        <option value="12">ياسر سلامة</option>
+
+    </select>
+    <br>
+    <br>
+    
+
+        <select id="fff" onchange="sel2()">
+        <option value="001">الفاتحة</option>
+        <option value="002">البقرة</option>
+        <option value="003">آل عمران</option>
+        <option value="004">النساء</option>
+        <option value="005">المائدة</option>
+        <option value="006">الأنعام</option>
+        <option value="007">الأعراف</option>
+        <option value="008">الأنفال</option>
+        <option value="009">التوبة</option>
+        <option value="010">يونس</option>
+        <option value="011">هود</option>
+        <option value="012">يوسف</option>
+        <option value="013">الرعد</option>
+        <option value="014">إبراهيم</option>
+        <option value="015">الحجر</option>
+        <option value="016">النحل</option>
+        <option value="017">الإسراء</option>
+        <option value="018">الكهف</option>
+        <option value="019">مريم</option>
+        <option value="020">طه</option>
+        <option value="021">الأنبياء</option>
+        <option value="022">الحج</option>
+        <option value="023">المؤمنون</option>
+        <option value="024">النور</option>
+        <option value="025">الفرقان</option>
+        <option value="026">الشعراء</option>
+        <option value="027">النمل</option>
+        <option value="028">القصص</option>
+        <option value="029">العنكبوت</option>
+        <option value="030">الروم</option>
+        <option value="031">لقمان</option>
+        <option value="032">السجدة</option>
+        <option value="033">الأحزاب</option>
+        <option value="034">سبأ</option>
+        <option value="035">فاطر</option>
+        <option value="036">يس</option>
+        <option value="037">الصافات</option>
+        <option value="038">ص</option>
+        <option value="039">الزمر</option>
+        <option value="040">غافر</option>
+        <option value="041">فصلت</option>
+        <option value="042">الشورى</option>
+        <option value="043">الزخرف</option>
+        <option value="044">الدخان</option>
+        <option value="045">الجاثية</option>
+        <option value="046">الأحقاف</option>
+        <option value="047">محمد</option>
+        <option value="048">الفتح</option>
+        <option value="049">الحجرات</option>
+        <option value="050">ق</option>
+        <option value="051">الذاريات</option>
+        <option value="052">الطور</option>
+        <option value="053">النجم</option>
+        <option value="054">القمر</option>
+        <option value="055">الرحمن</option>
+        <option value="056">الواقعة</option>
+        <option value="057">الحديد</option>
+        <option value="058">المجادلة</option>
+        <option value="059">الحشر</option>
+        <option value="060">الممتحنة</option>
+        <option value="061">الصف</option>
+        <option value="062">الجمعه</option>
+        <option value="063">المنافقون</option>
+        <option value="064">التغابن</option>
+        <option value="065">الطلاق</option>
+        <option value="066">التحريم</option>
+        <option value="067">الملك</option>
+        <option value="068">القلم</option>
+        <option value="069">الحاقة</option>
+        <option value="070">المعارج</option>
+        <option value="071">نوح</option>
+        <option value="072">الجن</option>
+        <option value="073">المزّمّل</option>
+        <option value="074">المدّثر</option>
+        <option value="075">القيامة</option>
+        <option value="076">الإنسان</option>
+        <option value="077">المرسلات</option>
+        <option value="078">النبأ</option>
+        <option value="079">النازعات</option>
+        <option value="080">عبس</option>
+        <option value="081">التكوير</option>
+        <option value="082">الإنفطار</option>
+        <option value="083">المطفّفين</option>
+        <option value="084">الإنشقاق</option>
+        <option value="085">البروج</option>
+        <option value="086">الطارق</option>
+        <option value="087">الأعلى</option>
+        <option value="088">الغاشية</option>
+        <option value="089">الفجر</option>
+        <option value="090">البلد</option>
+        <option value="091">الشمس</option>
+        <option value="092">الليل</option>
+        <option value="093">الضحى</option>
+        <option value="094">الشرح</option>
+        <option value="095">التين</option>
+        <option value="096">العلق</option>
+        <option value="097" >القدر</option>
+        <option value="098">البينة</option>
+        <option value="099">الزلزلة</option>
+        <option value="100">العاديات</option>
+        <option value="101">القارعة</option>
+        <option value="102">التكاثر</option>
+        <option value="103">العصر</option>
+        <option value="104">الهمزة</option>
+        <option value="105">الفيل</option>
+        <option value="106">قريش</option>
+        <option value="107">الماعون</option>
+        <option value="108">الكوثر</option>
+        <option value="109">الكافرون</option>
+        <option value="110" >النصر</option>
+        <option value="111">المسد</option>
+        <option value="112">الإخلاص</option>
+        <option value="113">الفلق</option>
+        <option value="114">الناس</option>
+    </select>
+    <br> 
+    
+    
+    <br>
+    <br>
+   
+   
+ 
+<!--
+   <button id="stop" onclick="stop()">stop &#9611</button>
+    
+   <button id="stop" onclick="stop()">stop &#9611</button>
+   <button  onclick="pause()">pause &#10074</button>
+      -->
+    <!---------------------------------------------Script-------------------------------------------->
+    <script>
+
+        var audio = document.getElementById("audio");
+        function pause() {
+            audio.pause();
+        }
+        function stop() {
+            audio.pause();
+            audio.currentTime = 0;
+
+        }
+        function sel2() {
+            var r = kkk.value;
+            var a = fff.value;
+           
+            //var t=fff.selectedIndex;
+            switch(r) {
+                case "1":
+                    audio.src = "https://server10.mp3quran.net/qht/" + a  + ".mp3";
+                    audio.play();
+                  
+                    break;
+
+                case "2":
+                    audio.src = "https://server12.mp3quran.net/maher/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "3":
+                    audio.src = "https://server11.mp3quran.net/sds/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "4":
+                    audio.src = "https://server7.mp3quran.net/basit/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "5":
+                    audio.src = "https://server8.mp3quran.net/jbrl/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "6":
+                    audio.src = "https://server10.mp3quran.net/minsh/" + a + ".mp3";
+                    audio.play();
+                    break;
+                 case "7":
+                    audio.src = "https://server8.mp3quran.net/frs_a/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "8":
+                    audio.src = "https://server13.mp3quran.net/husr/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "9":
+                    audio.src = "https://server8.mp3quran.net/bna/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "10":
+                    audio.src = "https://server8.mp3quran.net/afs/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "11":
+                    audio.src = "https://server8.mp3quran.net/mustafa/Almusshaf-Al-Mojawwad/" + a + ".mp3";
+                    audio.play();
+                    break;
+                case "12":
+                    audio.src = "https://server12.mp3quran.net/salamah/Rewayat-Hafs-A-n-Assem/" + a + ".mp3";
+                    audio.play();
+                    break;
+                
+            }
+        }
+/*
+        function sel() {
+            var a = fff.value;
+            var t=fff.selectedIndex;
+            audio.src = "https://server10.mp3quran.net/qht/" + a + ".mp3";
+            audio.play();
+            //t++;
+           //a++;
+            
+
+            //audio.onended = function () {
+               // fff.selectedIndex=t+1;
+               // audio.src = "https://server10.mp3quran.net/qht/" + a + ".mp3";
+                //audio.play();
+                
+                //t++;
+               // a++;
+            }
+            //t++;
+           // a++;
+            
+       // }
+
+        
+                
+    */
+    
+
+    </script>
+</body>
+
+</html>
