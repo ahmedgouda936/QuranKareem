@@ -8,10 +8,25 @@
 
 
     <style>
+        /* الألوان الافتراضية (الوضع الفاتح) */
+body {
+  background-color: white;
+  color: black;
+  transition: 0.3s; /* لإضافة نعومة عند التغيير */
+}
+
+/* ألوان الوضع الداكن */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: white;
+}
         body {
             text-align: center;
             background-color: rgb(199, 199, 199);
+            align-items: center;
+            
         }
+
         select {
             font-size: 30px;
             font-weight: bold;
@@ -20,7 +35,9 @@
             left: 700;
             position: relative;
             border-radius: 10px;
+            
         }
+
         ul {
             list-style-type: none;
             font-size: 25px;
@@ -31,21 +48,23 @@
         div {
             width: 1350px;
             background-color: aqua;
-            /* //<!-- padding: 20px;--> */
             border-radius: 5px;
             text-align: center;
 
         }
+
         audio {
             margin: 20px;
-            left: 500px;
-            width: 330px;
+            left: 450px;
+            width: 400px;
             height: 60px;
             border-radius: 10px;
             text-align: center;
             position: fixed;
+            
+            
         }
-   
+
 
         button {
             height: 40px;
@@ -56,14 +75,23 @@
             border-radius: 5px;
 
         }
+        label{
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+
     </style>
     <!-------------------------------------------------------------------------------->
 </head>
 
 <body>
-    <label style="font-size:40px ; font-weight: bold;">القرآن الكريم </label>
+   <button id="theme-toggle">تبديل الوضع</button>
+   <label >القرآن الكريم </label>
     <br>
-   
+
     <audio id="audio" controls>
         <source src="" type="audio/mp3">
     </audio>
@@ -73,7 +101,8 @@
     <br>
     <br>
     <br>
-    <select id="kkk" >
+    
+    <select id="kkk">
         <option value="1">خالد القحطاني</option>
         <option value="2">ماهر المعيقلي</option>
         <option value="3">السديس</option>
@@ -86,13 +115,15 @@
         <option value="10">العفاسي</option>
         <option value="11">مصطفى إسماعيل</option>
         <option value="12">ياسر سلامة</option>
+        <option value="13">صلاح البدير</option>
+
 
     </select>
     <br>
     <br>
-    
 
-        <select id="fff" onchange="sel2()">
+
+    <select id="fff" onchange="yy()">
         <option value="001">الفاتحة</option>
         <option value="002">البقرة</option>
         <option value="003">آل عمران</option>
@@ -189,7 +220,7 @@
         <option value="094">الشرح</option>
         <option value="095">التين</option>
         <option value="096">العلق</option>
-        <option value="097" >القدر</option>
+        <option value="097">القدر</option>
         <option value="098">البينة</option>
         <option value="099">الزلزلة</option>
         <option value="100">العاديات</option>
@@ -202,124 +233,467 @@
         <option value="107">الماعون</option>
         <option value="108">الكوثر</option>
         <option value="109">الكافرون</option>
-        <option value="110" >النصر</option>
+        <option value="110">النصر</option>
         <option value="111">المسد</option>
         <option value="112">الإخلاص</option>
         <option value="113">الفلق</option>
         <option value="114">الناس</option>
+        <option >ختمة مباركة</option>
+        
+
     </select>
-    <br> 
-    
-    
-    <br>
     <br>
    
    
- 
-<!--
-   <button id="stop" onclick="stop()">stop &#9611</button>
-    
-   <button id="stop" onclick="stop()">stop &#9611</button>
-   <button  onclick="pause()">pause &#10074</button>
-      -->
+    <br>
+    <br>
+
     <!---------------------------------------------Script-------------------------------------------->
     <script>
+            //////////////////////////////// الثيم ////////////////////////////////////
+            const btn = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme');
 
+// التأكد من حالة الثيم عند تحميل الصفحة
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark-mode');
+}
+
+btn.addEventListener('click', function() {
+  document.body.classList.toggle('dark-mode');
+  
+  // حفظ الاختيار في ذاكرة المتصفح
+  let theme = 'light';
+  if (document.body.classList.contains('dark-mode')) {
+    theme = 'dark';
+  }
+  localStorage.setItem('theme', theme);
+});
+
+
+        ///////////////////////////////////////////////////////////////////////////
+ 
         var audio = document.getElementById("audio");
+    ////////////////////////////////// functions ///////////////////////////////
+    /////////////////////////////////// إيقاف مؤقت ////////////////////////////////////////
         function pause() {
             audio.pause();
         }
+    //////////////////////////////////////// إيقاف /////////////////////////////////////   
         function stop() {
             audio.pause();
             audio.currentTime = 0;
-
         }
-        function sel2() {
+    /////////////////////////////////////// القحطاني //////////////////////////////////
+        function ght() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server10.mp3quran.net/qht/00"+a+".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server10.mp3quran.net/qht/0"+a+".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server10.mp3quran.net/qht/"+a+".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+    /////////////////////////////////////////// ماهر المعيقلي ///////////////////////////////////
+        function maher() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server12.mp3quran.net/maher/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server12.mp3quran.net/maher/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server12.mp3quran.net/maher/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  //////////////////////////////////////// السديس /////////////////////////////////
+        function sds() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server11.mp3quran.net/sds/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server11.mp3quran.net/sds/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server11.mp3quran.net/sds/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+    /////////////////////////////////////// عبد الباسط ////////////////////////////////////
+           function basit() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server7.mp3quran.net/basit/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server7.mp3quran.net/basit/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server7.mp3quran.net/basit/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ///////////////////////////////////////// محمد جبريل ////////////////////////////////
+                 function jbrl() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server8.mp3quran.net/jbrl/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server8.mp3quran.net/jbrl/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server8.mp3quran.net/jbrl/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ////////////////////////////////////////// المنشاوي /////////////////////////////////
+                   function minsh() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server10.mp3quran.net/minsh/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server10.mp3quran.net/minsh/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server10.mp3quran.net/minsh/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ///////////////////////////////////////// فارس عباد ////////////////////////////////////
+               function frs_a() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server8.mp3quran.net/frs_a/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server8.mp3quran.net/frs_a/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server8.mp3quran.net/frs_a/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  //////////////////////////////////////////// الحصري ///////////////////////////////////
+             function husr() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server13.mp3quran.net/husr/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server13.mp3quran.net/husr/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server13.mp3quran.net/husr/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  //////////////////////////////////////////// البنا ////////////////////////////////////
+                function bna() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server8.mp3quran.net/bna/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server8.mp3quran.net/bna/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server8.mp3quran.net/bna/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  //////////////////////////////////////// العفاسي //////////////////////////////////////
+                   function afs() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server8.mp3quran.net/afs/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server8.mp3quran.net/afs/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server8.mp3quran.net/afs/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ///////////////////////////////////////// مصطفى إسماعيل ////////////////////////////////////////
+                     function mustafa() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server8.mp3quran.net/mustafa/Almusshaf-Al-Mojawwad/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server8.mp3quran.net/mustafa/Almusshaf-Al-Mojawwad/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server8.mp3quran.net/mustafa/Almusshaf-Al-Mojawwad/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ///////////////////////////////////////////// ياسر سلامة ///////////////////////////////////////
+                function salamah() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server12.mp3quran.net/salamah/Rewayat-Hafs-A-n-Assem/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server12.mp3quran.net/salamah/Rewayat-Hafs-A-n-Assem/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server12.mp3quran.net/salamah/Rewayat-Hafs-A-n-Assem/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ///////////////////////////////////////////// صلاح البدير /////////////////////////////////////////
+                  function s_bud() {
+           var a=fff.value;
+           a++;
+           audio.onended = function () {
+            if (a<10){
+                audio.src = "https://server6.mp3quran.net/s_bud/00" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+            else if (a>9&&a<100){
+                audio.src = "https://server6.mp3quran.net/s_bud/0" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            } 
+            else{
+                audio.src = "https://server6.mp3quran.net/s_bud/" + a + ".mp3";
+                audio.play();
+                fff.selectedIndex=a-1;
+                a++; 
+            }
+        }
+    }
+  ////////////////////////////////////////////دالة التشغيل////////////////////////////////////////////
+        function yy() {
             var r = kkk.value;
-            var a = fff.value;
-           
-            //var t=fff.selectedIndex;
-            switch(r) {
+            var a=fff.value;
+            switch (r) {
                 case "1":
-                    audio.src = "https://server10.mp3quran.net/qht/" + a  + ".mp3";
+                    audio.src = "https://server10.mp3quran.net/qht/" + a + ".mp3";
                     audio.play();
-                  
+                    ght();
                     break;
-
                 case "2":
                     audio.src = "https://server12.mp3quran.net/maher/" + a + ".mp3";
                     audio.play();
+                    maher();
+                    a++;
                     break;
                 case "3":
                     audio.src = "https://server11.mp3quran.net/sds/" + a + ".mp3";
                     audio.play();
+                    sds();
+                    a++;
                     break;
                 case "4":
                     audio.src = "https://server7.mp3quran.net/basit/" + a + ".mp3";
                     audio.play();
+                    basit();
+                    a++;
                     break;
                 case "5":
                     audio.src = "https://server8.mp3quran.net/jbrl/" + a + ".mp3";
                     audio.play();
+                    jbrl();
+                    a++;
                     break;
                 case "6":
                     audio.src = "https://server10.mp3quran.net/minsh/" + a + ".mp3";
                     audio.play();
+                    minsh();
+                    a++;
                     break;
-                 case "7":
+                case "7":
                     audio.src = "https://server8.mp3quran.net/frs_a/" + a + ".mp3";
                     audio.play();
+                    frs_a();
+                    a++;
                     break;
                 case "8":
                     audio.src = "https://server13.mp3quran.net/husr/" + a + ".mp3";
                     audio.play();
+                    husr();
+                    a++;
                     break;
                 case "9":
                     audio.src = "https://server8.mp3quran.net/bna/" + a + ".mp3";
                     audio.play();
+                    bna();
+                    a++;
                     break;
                 case "10":
                     audio.src = "https://server8.mp3quran.net/afs/" + a + ".mp3";
                     audio.play();
+                    afs();
+                    a++;
                     break;
                 case "11":
                     audio.src = "https://server8.mp3quran.net/mustafa/Almusshaf-Al-Mojawwad/" + a + ".mp3";
                     audio.play();
+                    mustafa();
+                    a++;
                     break;
                 case "12":
                     audio.src = "https://server12.mp3quran.net/salamah/Rewayat-Hafs-A-n-Assem/" + a + ".mp3";
                     audio.play();
+                    salamah();
+                    a++;
                     break;
-                
+                case "13":
+                    audio.src = "https://server6.mp3quran.net/s_bud/" + a + ".mp3";
+                    audio.play();
+                    s_bud();
+                    a++;
+                    break;
+
             }
         }
-/*
-        function sel() {
-            var a = fff.value;
-            var t=fff.selectedIndex;
-            audio.src = "https://server10.mp3quran.net/qht/" + a + ".mp3";
-            audio.play();
-            //t++;
-           //a++;
-            
-
-            //audio.onended = function () {
-               // fff.selectedIndex=t+1;
-               // audio.src = "https://server10.mp3quran.net/qht/" + a + ".mp3";
-                //audio.play();
-                
-                //t++;
-               // a++;
-            }
-            //t++;
-           // a++;
-            
-       // }
-
-        
-                
-    */
-    
 
     </script>
 </body>
